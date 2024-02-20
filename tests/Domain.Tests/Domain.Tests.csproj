@@ -27,11 +27,11 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\Domain\Domain.csproj" />
+      <Folder Include="Unit\Matches\Snapshots\" />
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Unit\Matches\Snapshots\" />
+      <ProjectReference Include="..\..\source\Domain\Domain.csproj" />
     </ItemGroup>
 
 </Project>

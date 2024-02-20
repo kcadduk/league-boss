@@ -6,8 +6,8 @@
   Organiser: Guid_3,
   Games: [
     {
-      PlayerOne: Guid_1,
-      PlayerTwo: null,
+      HomePlayer: Guid_1,
+      AwayPlayer: null,
       Id: Guid_Empty,
       GameNumber: 1,
       Frames: [
@@ -22,8 +22,8 @@
       ]
     },
     {
-      PlayerOne: Guid_1,
-      PlayerTwo: null,
+      HomePlayer: Guid_1,
+      AwayPlayer: null,
       Id: Guid_Empty,
       GameNumber: 2,
       Frames: [
