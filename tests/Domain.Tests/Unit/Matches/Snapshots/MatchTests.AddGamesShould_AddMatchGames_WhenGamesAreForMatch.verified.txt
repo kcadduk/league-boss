@@ -1,0 +1,32 @@
+﻿{
+  Id: Guid_Empty,
+  SportId: Guid_Empty,
+  Organiser: Guid_Empty,
+  Games: [
+    {
+      Id: Guid_Empty,
+      GameNumber: 0,
+      Frames: null
+    },
+    {
+      Id: Guid_Empty,
+      GameNumber: 0,
+      Frames: null
+    },
+    {
+      Id: Guid_Empty,
+      GameNumber: 0,
+      Frames: null
+    },
+    {
+      Id: Guid_Empty,
+      GameNumber: 0,
+      Frames: null
+    },
+    {
+      Id: Guid_Empty,
+      GameNumber: 0,
+      Frames: null
+    }
+  ]
+}

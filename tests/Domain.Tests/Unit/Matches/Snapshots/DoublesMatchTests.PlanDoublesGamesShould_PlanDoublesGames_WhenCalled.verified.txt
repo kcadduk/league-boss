@@ -1,0 +1,41 @@
+﻿{
+  HomePlayers: null,
+  AwayPlayers: null,
+  Id: Guid_Empty,
+  SportId: Guid_1,
+  Organiser: Guid_2,
+  Games: [
+    {
+      HomePairing: null,
+      AwayPairing: null,
+      Id: Guid_Empty,
+      GameNumber: 1,
+      Frames: [
+        {
+          FrameNumber: 1,
+          FrameResult: null
+        },
+        {
+          FrameNumber: 2,
+          FrameResult: null
+        }
+      ]
+    },
+    {
+      HomePairing: null,
+      AwayPairing: null,
+      Id: Guid_Empty,
+      GameNumber: 2,
+      Frames: [
+        {
+          FrameNumber: 1,
+          FrameResult: null
+        },
+        {
+          FrameNumber: 2,
+          FrameResult: null
+        }
+      ]
+    }
+  ]
+}

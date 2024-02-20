@@ -4,8 +4,17 @@
         <TargetFramework>net8.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <WarningsAsErrors>nullable</WarningsAsErrors>
         <AssemblyName>LeagueBoss.Domain</AssemblyName>
         <RootNamespace>LeagueBoss.Domain</RootNamespace>
+        
     </PropertyGroup>
-
+    
+    <ItemGroup>
+        <InternalsVisibleTo Include="$(AssemblyName).Tests" />
+    </ItemGroup>
+    
+    <ItemGroup>
+        <PackageReference Include="StronglyTypedId" Version="1.0.0-beta07" PrivateAssets="all" ExcludeAssets="runtime" />
+    </ItemGroup>
 </Project>

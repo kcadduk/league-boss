@@ -1,0 +1,70 @@
+﻿{
+  MatchPlayers: [
+    {
+      TeamPlayer: {
+        PlayerId: Guid_1,
+        TeamId: Guid_2
+      }
+    },
+    {
+      TeamPlayer: {
+        PlayerId: Guid_3,
+        TeamId: Guid_2
+      }
+    },
+    {
+      TeamPlayer: {
+        PlayerId: Guid_4,
+        TeamId: Guid_2
+      }
+    },
+    {
+      TeamPlayer: {
+        PlayerId: Guid_5,
+        TeamId: Guid_2
+      }
+    },
+    {
+      TeamPlayer: {
+        PlayerId: Guid_6,
+        TeamId: Guid_2
+      }
+    },
+    {
+      TeamPlayer: {
+        PlayerId: Guid_7,
+        TeamId: Guid_8
+      }
+    },
+    {
+      TeamPlayer: {
+        PlayerId: Guid_9,
+        TeamId: Guid_8
+      }
+    },
+    {
+      TeamPlayer: {
+        PlayerId: Guid_10,
+        TeamId: Guid_8
+      }
+    },
+    {
+      TeamPlayer: {
+        PlayerId: Guid_11,
+        TeamId: Guid_8
+      }
+    },
+    {
+      TeamPlayer: {
+        PlayerId: Guid_12,
+        TeamId: Guid_8
+      }
+    }
+  ],
+  HomeTeam: Guid_2,
+  AwayTeam: Guid_8,
+  Id: Guid_Empty,
+  SportId: Guid_13,
+  Organiser: Guid_14,
+  Games: null
+}
