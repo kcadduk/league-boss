@@ -1,0 +1,14 @@
+﻿{
+  HomePlayers: {
+    PlayerOne: Guid_1,
+    PlayerTwo: Guid_2
+  },
+  AwayPlayers: {
+    PlayerOne: Guid_3,
+    PlayerTwo: Guid_4
+  },
+  Id: Guid_Empty,
+  SportId: Guid_5,
+  Organiser: Guid_6,
+  Games: null
+}

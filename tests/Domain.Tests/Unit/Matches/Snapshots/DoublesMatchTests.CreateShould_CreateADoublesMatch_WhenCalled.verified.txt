@@ -1,0 +1,8 @@
+﻿{
+  HomePlayers: null,
+  AwayPlayers: null,
+  Id: Guid_Empty,
+  SportId: Guid_1,
+  Organiser: Guid_2,
+  Games: null
+}
