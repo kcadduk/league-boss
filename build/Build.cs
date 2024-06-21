@@ -17,7 +17,9 @@ using static Nuke.Common.IO.PathConstruction;
 
 [GitHubActions("continuous",
     GitHubActionsImage.UbuntuLatest,
-    On = [GitHubActionsTrigger.Push])]
+    FetchDepth = 0,
+    On = [GitHubActionsTrigger.Push])
+]
 class Build : NukeBuild
 {
     /// Support plugins are available for:
