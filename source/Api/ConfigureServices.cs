@@ -1,5 +1,6 @@
 namespace LeagueBoss.Api;
 
+using System.Reflection;
 using FastEndpoints;
 using FastEndpoints.Swagger;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -16,7 +17,17 @@ public static class ConfigureServices
                 serilog
                     .WriteTo.Console()
                     .ReadFrom.Services(sp);
-            });;
+            });
+
+        serviceCollection.AddMediator();
+        
+        return serviceCollection;
+    }
+    
+    private static IServiceCollection AddMediator(this IServiceCollection serviceCollection)
+    {
+        serviceCollection.AddMediatR(o => { o.RegisterServicesFromAssembly(Assembly.Load("LeagueBoss.Application")); });
+
         return serviceCollection;
     }
 
