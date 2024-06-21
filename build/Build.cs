@@ -1,19 +1,9 @@
-using System;
-using System.Linq;
 using Nuke.Common;
-using Nuke.Common.CI;
 using Nuke.Common.CI.GitHubActions;
-using Nuke.Common.Execution;
 using Nuke.Common.IO;
-using Nuke.Common.ProjectModel;
-using Nuke.Common.Tooling;
 using Nuke.Common.Tools.DotNet;
 using Nuke.Common.Tools.NerdbankGitVersioning;
-using Nuke.Common.Utilities.Collections;
 using Serilog;
-using static Nuke.Common.EnvironmentInfo;
-using static Nuke.Common.IO.FileSystemTasks;
-using static Nuke.Common.IO.PathConstruction;
 
 [GitHubActions("continuous",
     GitHubActionsImage.UbuntuLatest,
@@ -41,11 +31,10 @@ class Build : NukeBuild
             TemporaryDirectory.CreateOrCleanDirectory();
         });
 
-    Target Print => _ => _
-        .TriggeredBy(Compile)
+    Target Versioning => _ => _
         .Executes(() =>
         {
-            Log.Information("NerdbankVersioning = {Value}", NerdbankVersioning.SimpleVersion);
+            Log.Information("NerdbankVersioning = {Value}", NerdbankVersioning.AssemblyVersion);
         });
 
     Target Restore => _ => _
@@ -56,6 +45,7 @@ class Build : NukeBuild
 
     Target Compile => _ => _
         .DependsOn(Restore)
+        .DependsOn(Versioning)
         .Executes(() =>
         {
             DotNetTasks.DotNetBuild(s =>
