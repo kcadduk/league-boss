@@ -1,4 +1,6 @@
 using LeagueBoss.Api;
+using LeagueBoss.Application;
+using LeagueBoss.Infrastructure;
 using Serilog;
 
 Log.Logger = new LoggerConfiguration()
@@ -11,7 +13,9 @@ try
     var builder = WebApplication.CreateBuilder(args);
 
     builder.Services
-        .ConfigureWebApplicationServices();
+        .ConfigureWebApplicationServices()
+        .ConfigureApplicationServices()
+        .ConfigureInfrastructureServices();
     
     var app = builder.Build();
 

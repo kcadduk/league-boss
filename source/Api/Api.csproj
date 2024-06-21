@@ -7,6 +7,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>LeagueBoss.Api</RootNamespace>
     <AssemblyName>LeagueBoss.Api</AssemblyName>
+    <UserSecretsId>9db1f2fb-68e8-4c4b-bbe3-54f8f759757e</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
