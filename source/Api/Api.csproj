@@ -5,8 +5,8 @@
     <Nullable>enable</Nullable>
     <WarningsAsErrors>nullable</WarningsAsErrors>
     <ImplicitUsings>enable</ImplicitUsings>
-    <RootNamespace>LeagueBoss.Application</RootNamespace>
-    <AssemblyName>LeagueBoss.Application</AssemblyName>
+    <RootNamespace>LeagueBoss.Api</RootNamespace>
+    <AssemblyName>LeagueBoss.Api</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
@@ -20,10 +20,6 @@
   <ItemGroup>
     <ProjectReference Include="..\Domain\Domain.csproj" />
     <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="FastEndpoints\" />
   </ItemGroup>
 
 </Project>

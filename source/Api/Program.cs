@@ -1,7 +1,4 @@
-using FastEndpoints;
-using FastEndpoints.Swagger;
-using LeagueBoss.Application;
-using LeagueBoss.Infrastructure.Persistence;
+using LeagueBoss.Api;
 using Serilog;
 
 Log.Logger = new LoggerConfiguration()
@@ -18,13 +15,7 @@ try
     
     var app = builder.Build();
 
-    app.UseHttpsRedirection();
-    app.UseCors();
-    app.UseAuthentication();
-    app.UseAuthorization();
-
-    app.UseFastEndpoints()
-        .UseSwaggerGen();
+    app.ConfigureMiddleware();
 
     app.Run();
 }

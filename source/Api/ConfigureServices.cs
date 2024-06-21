@@ -1,4 +1,4 @@
-namespace LeagueBoss.Application;
+namespace LeagueBoss.Api;
 
 using FastEndpoints;
 using FastEndpoints.Swagger;
