@@ -7,5 +7,7 @@
   EmailAddress: {
     Address: test@localhost
   },
-  PasswordAuthentication: null
+  PasswordAuthentication: null,
+  CreatedAt: Date_MinValue,
+  UpdatedAt: null
 }
