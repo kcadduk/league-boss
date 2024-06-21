@@ -14,12 +14,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "source\In
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "source\Application\Application.csproj", "{7A665EEE-85DF-447B-B9B1-F012443CF89A}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "_build", "build\_build.csproj", "{4E1B4520-876E-46FA-B391-F3271979CED4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4E1B4520-876E-46FA-B391-F3271979CED4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E1B4520-876E-46FA-B391-F3271979CED4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8D5B60C3-3FD3-45DF-AD23-F62C0C4940C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8D5B60C3-3FD3-45DF-AD23-F62C0C4940C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8D5B60C3-3FD3-45DF-AD23-F62C0C4940C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
