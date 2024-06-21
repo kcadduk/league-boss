@@ -17,7 +17,7 @@ public class MatchTests
         };
         
         var games = Enumerable.Range(0, 5)
-            .Select(g => new GameStub()
+            .Select(_ => new GameStub()
             {
                 Match = sut,
             });
@@ -46,7 +46,7 @@ public class MatchTests
         };
         
         var games = Enumerable.Range(0, 5)
-            .Select(g => new GameStub()
+            .Select(_ => new GameStub()
             {
                 Match = otherMatch,
             });
@@ -70,7 +70,7 @@ public class MatchTests
         };
         
         var games = Enumerable.Range(0, 5)
-            .Select(g => new GameStub()
+            .Select(_ => new GameStub
             {
                 Match = sut,
             }).ToList();
