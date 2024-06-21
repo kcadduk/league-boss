@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using Nuke.Common;
 using Nuke.Common.CI;
+using Nuke.Common.CI.GitHubActions;
 using Nuke.Common.Execution;
 using Nuke.Common.IO;
 using Nuke.Common.ProjectModel;
@@ -14,6 +15,9 @@ using static Nuke.Common.EnvironmentInfo;
 using static Nuke.Common.IO.FileSystemTasks;
 using static Nuke.Common.IO.PathConstruction;
 
+[GitHubActions("continuous",
+    GitHubActionsImage.UbuntuLatest,
+    On = [GitHubActionsTrigger.Push])]
 class Build : NukeBuild
 {
     /// Support plugins are available for:
@@ -21,22 +25,20 @@ class Build : NukeBuild
     ///   - JetBrains Rider            https://nuke.build/rider
     ///   - Microsoft VisualStudio     https://nuke.build/visualstudio
     ///   - Microsoft VSCode           https://nuke.build/vscode
-
-    public static int Main () => Execute<Build>(x => x.Test);
+    public static int Main() => Execute<Build>(x => x.Test);
 
     [Parameter("Configuration to build - Default is 'Debug' (local) or 'Release' (server)")]
     readonly Configuration Configuration = IsLocalBuild ? Configuration.Debug : Configuration.Release;
-    
-    [NerdbankGitVersioning]
-    readonly NerdbankGitVersioning NerdbankVersioning;
-    
+
+    [NerdbankGitVersioning] readonly NerdbankGitVersioning NerdbankVersioning;
+
     Target Clean => _ => _
         .Before(Restore)
         .Executes(() =>
         {
             TemporaryDirectory.CreateOrCleanDirectory();
         });
-    
+
     Target Print => _ => _
         .TriggeredBy(Compile)
         .Executes(() =>
@@ -54,7 +56,7 @@ class Build : NukeBuild
         .DependsOn(Restore)
         .Executes(() =>
         {
-            DotNetTasks.DotNetBuild(s => 
+            DotNetTasks.DotNetBuild(s =>
                 s.SetNoRestore(true));
         });
 
@@ -64,7 +66,4 @@ class Build : NukeBuild
         {
             DotNetTasks.DotNetTest();
         });
-    
-    
-
 }
