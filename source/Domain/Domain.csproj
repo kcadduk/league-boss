@@ -15,6 +15,7 @@
     </ItemGroup>
     
     <ItemGroup>
+        <PackageReference Include="Microsoft.IdentityModel.Abstractions" Version="7.6.2" />
         <PackageReference Include="StronglyTypedId" Version="1.0.0-beta07" PrivateAssets="all" ExcludeAssets="runtime" />
     </ItemGroup>
 </Project>

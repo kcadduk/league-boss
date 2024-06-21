@@ -1,0 +1,11 @@
+﻿{
+  Id: Guid_1,
+  Name: {
+    FullName: Test,
+    Alias: null
+  },
+  EmailAddress: {
+    Address: test@localhost
+  },
+  PasswordAuthentication: null
+}
