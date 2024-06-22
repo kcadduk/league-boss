@@ -29,16 +29,17 @@ public class DatabaseMigrationHandler : IDatabaseMigrationHandler
     {
         var sqlConnectionString = new SqlConnectionStringBuilder(_connectionStrings.SqlServer);
         var newDatabaseName = sqlConnectionString.InitialCatalog;
-        sqlConnectionString.InitialCatalog = "master";
+        sqlConnectionString.InitialCatalog = string.Empty;
 
         await using var connection = new SqlConnection(sqlConnectionString.ConnectionString);
         await using var command = connection.CreateCommand();
 
         command.CommandText = $"""
+                               USE master;
                                IF NOT EXISTS(SELECT * FROM sys.databases WHERE NAME='{newDatabaseName}') 
                                BEGIN 
-                                   CREATE DATABASE [{newDatabaseName}]; 
-                               END
+                                   EXEC('CREATE DATABASE [{newDatabaseName}];'); 
+                               END;
                                """;
         
         await connection.OpenAsync();
@@ -55,7 +56,9 @@ public class DatabaseMigrationHandler : IDatabaseMigrationHandler
                 rb.AddSqlServer()
                     .WithGlobalConnectionString(connectionString)
                     .ScanIn(Assembly.GetExecutingAssembly()).For.Migrations())
+#if DEBUG
             .AddLogging(lb => lb.AddFluentMigratorConsole())
+#endif
             .BuildServiceProvider();
     }
 }

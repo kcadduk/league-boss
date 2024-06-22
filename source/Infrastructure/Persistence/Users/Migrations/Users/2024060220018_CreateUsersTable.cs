@@ -1,5 +1,6 @@
 namespace LeagueBoss.Infrastructure.Persistence.Users.Migrations.Users;
 
+using System.Data;
 using FluentMigrator;
 
 [Migration(2024060220018)]
@@ -14,12 +15,12 @@ public class CreateUsersTable : ForwardOnlyMigration
             .WithColumn("EmailAddress").AsString(256)
             .WithColumn("PasswordAuthenticationId").AsGuid()
                 .ForeignKey(string.Empty, "users", "PasswordAuthentication", "Id")
+                .OnDelete(Rule.Cascade)
                 .Nullable()
             .WithColumn("CreatedAt").AsDateTimeOffset()
-                .WithDefault(SystemMethods.CurrentUTCDateTime)
-                .NotNullable()
+            .WithDefault(SystemMethods.CurrentUTCDateTime)
+            .NotNullable()
             .WithColumn("UpdatedAt").AsDateTimeOffset()
-                .Nullable();
-        
+            .Nullable();
     }
 }
