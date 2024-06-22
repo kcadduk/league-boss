@@ -26,7 +26,7 @@ public static class ConfigureServices
     
     private static IServiceCollection AddMediator(this IServiceCollection serviceCollection)
     {
-        
+        serviceCollection.AddMediatR(o => { o.RegisterServicesFromAssembly(Assembly.Load("LeagueBoss.Application")); });
         return serviceCollection;
     }
 
