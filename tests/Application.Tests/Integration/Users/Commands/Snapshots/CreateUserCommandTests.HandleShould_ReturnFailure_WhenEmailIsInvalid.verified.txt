@@ -1,0 +1,11 @@
+﻿[
+  {
+    Type: InvalidEmailAddressException,
+    EmailAddress: ,
+    Message: Exception of type 'LeagueBoss.Domain.Users.InvalidEmailAddressException' was thrown.,
+    Data: null,
+    InnerException: null,
+    HelpLink: null,
+    StackTrace: null
+  }
+]
