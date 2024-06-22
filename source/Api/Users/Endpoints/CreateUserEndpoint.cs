@@ -15,6 +15,7 @@ public class CreateUserEndpoint : Endpoint<CreateUserCommand, UserId>
     {
         Post("/users/create");
         Summary(s => s.Summary = "Create a single user");
+        AllowAnonymous();
     }
 
     public override async Task HandleAsync(CreateUserCommand req, CancellationToken ct)

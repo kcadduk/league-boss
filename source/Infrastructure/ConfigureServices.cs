@@ -1,12 +1,13 @@
 namespace LeagueBoss.Infrastructure;
 
+using Application.Time;
 using Application.Users;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using Persistence;
 using Persistence.Users;
+using Time;
 
 public static class ConfigureServices
 {
@@ -14,20 +15,27 @@ public static class ConfigureServices
     {
         serviceCollection.AddScoped<IDatabaseMigrationHandler, DatabaseMigrationHandler>();
         serviceCollection.ConfigureEntityFramework();
+        serviceCollection.AddTimeProvider();
         return serviceCollection;
     }
 
     private static IServiceCollection ConfigureEntityFramework(this IServiceCollection serviceCollection)
     {
-        serviceCollection.AddSingleton<DbContextOptions>(provider =>
+        serviceCollection.AddDbContext<IUsersDbContext, UsersDbContext>((provider, builder) =>
         {
             var databaseConnectionStrings = provider.GetRequiredService<IOptions<DatabaseConnectionStrings>>().Value;
-            
-            return new DbContextOptionsBuilder()
-                .UseSqlServer(databaseConnectionStrings.SqlServer)
-                .Options;
+            builder.UseSqlServer(databaseConnectionStrings.SqlServer);
+
+#if DEBUG
+            builder.EnableSensitiveDataLogging();
+#endif
         });
-        serviceCollection.AddDbContext<IUsersDbContext, UsersDbContext>();
+        return serviceCollection;
+    }
+
+    private static IServiceCollection AddTimeProvider(this IServiceCollection serviceCollection)
+    {
+        serviceCollection.AddSingleton<ITimeProvider, TimeProvider>();
         return serviceCollection;
     }
 }

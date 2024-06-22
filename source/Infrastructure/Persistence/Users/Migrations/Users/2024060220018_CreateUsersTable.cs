@@ -12,7 +12,7 @@ public class CreateUsersTable : ForwardOnlyMigration
             .WithColumn("Id").AsGuid().PrimaryKey().WithDefault(SystemMethods.NewSequentialId)
             .WithColumn("FullName").AsString(100)
             .WithColumn("Alias").AsString(50)
-            .WithColumn("EmailAddress").AsString(256)
+            .WithColumn("EmailAddress").AsString(256).Unique()
             .WithColumn("PasswordAuthenticationId").AsGuid()
                 .ForeignKey(string.Empty, "users", "PasswordAuthentication", "Id")
                 .OnDelete(Rule.Cascade)

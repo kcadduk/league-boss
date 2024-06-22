@@ -9,12 +9,11 @@ public class PasswordAuthenticationConfiguration : IEntityTypeConfiguration<Pass
     public void Configure(EntityTypeBuilder<PasswordAuthentication> builder)
     {
         builder.HasKey(x => x.Id);
-        builder.Property(x => x.Id).ValueGeneratedOnAdd();
+        builder.Property(x => x.Id).HasDefaultValueSql();
 
         builder.ToTable("PasswordAuthentication", "users");
 
-        // builder.OwnsOne(x => x.Password);
         builder.Property(x => x.Password)
-            .HasConversion<string>(x => x.Value, s => HashedStringWithSalt.Create(s));
+            .HasConversion<string>(x => x.Value, s => HashedStringWithSalt.Parse(s));
     }
 }

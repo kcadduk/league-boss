@@ -20,32 +20,38 @@ public record HashedStringWithSalt
         return ToString() == inputPasswordHash.value;
     }
     
-    public static bool TryParse(string input, [MaybeNullWhen(false)] out HashedStringWithSalt result)
+    public static bool TryParse(string hashedStringWithSalt, [MaybeNullWhen(false)] out HashedStringWithSalt result)
     {
         byte[] hashBytes;
         try
         {
-            hashBytes = Convert.FromBase64String(input);
+            hashBytes = Convert.FromBase64String(hashedStringWithSalt);
+            if(hashBytes.Length < 36)
+            {
+                result = null;
+                return false;
+            }
+
+            result = Parse(hashedStringWithSalt);
+            return true;
         }
         catch
         {
             result = null;
             return false;
         }
-        
-        if(hashBytes.Length < 36)
-        {
-            result = null;
-            return false;
-        }
+    }
+
+    public static HashedStringWithSalt Parse(string hashedStringWithSalt)
+    {
+        var hashBytes = Convert.FromBase64String(hashedStringWithSalt);
         
         var salt = new byte[16];
         Array.Copy(hashBytes, 0, salt, 0, 16);
         var hash = new byte[hashBytes.Length - 16];
         Array.Copy(hashBytes, 16, hash, 0, hashBytes.Length - 16);
         
-        result = new HashedStringWithSalt { Value = input, _salt = salt };
-        return true;
+        return new HashedStringWithSalt { Value = hashedStringWithSalt, _salt = salt };
     }
 
     public static HashedStringWithSalt Create(string plainTextString)
