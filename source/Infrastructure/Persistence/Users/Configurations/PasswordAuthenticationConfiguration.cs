@@ -9,6 +9,8 @@ public class PasswordAuthenticationConfiguration : IEntityTypeConfiguration<Pass
     public void Configure(EntityTypeBuilder<PasswordAuthentication> builder)
     {
         builder.HasKey(x => x.Id);
+        builder.Property(x => x.Id).ValueGeneratedOnAdd();
+
         builder.ToTable("PasswordAuthentication", "users");
 
         // builder.OwnsOne(x => x.Password);

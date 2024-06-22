@@ -31,3 +31,6 @@ finally
 {
     Log.CloseAndFlush();
 }
+
+// This line exists to support Integration Testing - Do not remove it;
+public partial class Program;

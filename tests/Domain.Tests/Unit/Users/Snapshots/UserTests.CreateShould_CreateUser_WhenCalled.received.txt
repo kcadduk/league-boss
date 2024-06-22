@@ -1,0 +1,13 @@
+﻿{
+  Id: Guid_Empty,
+  Name: {
+    FullName: Test,
+    Alias: null
+  },
+  EmailAddress: {
+    Address: test@localhost
+  },
+  PasswordAuthentication: null,
+  CreatedAt: Date_MinValue,
+  UpdatedAt: null
+}
