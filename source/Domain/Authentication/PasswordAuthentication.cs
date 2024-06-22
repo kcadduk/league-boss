@@ -20,7 +20,7 @@ public record PasswordAuthentication : IEntity<PasswordAuthenticationId>
         };
     }
     
-    public PasswordAuthenticationId Id { get; init; } = PasswordAuthenticationId.New();
+    public PasswordAuthenticationId Id { get; init; }
     public required HashedStringWithSalt Password { get; init; }
     public required User User { get; init; }
 }

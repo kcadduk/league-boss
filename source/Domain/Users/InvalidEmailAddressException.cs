@@ -4,7 +4,7 @@ public class InvalidEmailAddressException : Exception
 {
     public string EmailAddress { get; }
 
-    public InvalidEmailAddressException(string emailAddress, Exception? inner) : base(inner?.Message, inner)
+    public InvalidEmailAddressException(string emailAddress, Exception? inner = default) : base(inner?.Message, inner)
     {
         EmailAddress = emailAddress;
     }

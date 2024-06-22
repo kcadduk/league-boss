@@ -8,7 +8,7 @@ public record User : Entity, IEntity<UserId>
 {
     private User() {}
     
-    public UserId Id { get; init; } = UserId.New();
+    public UserId Id { get; init; }
     public required UserName Name { get; init; }
     public EmailAddress EmailAddress { get; private set; } = null!;
     public PasswordAuthentication? PasswordAuthentication { get; private set; }
