@@ -3,7 +3,7 @@ namespace LeagueBoss.Application.Users.Commands.CreateUser;
 using Domain.Users;
 using Results;
 
-public record AlreadyRegisteredException : Result<UserId>
+public class AlreadyRegisteredException : Exception
 {
     public EmailAddress EmailAddress { get; }
 
