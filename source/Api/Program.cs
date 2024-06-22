@@ -12,8 +12,14 @@ try
 {
     var builder = WebApplication.CreateBuilder(args);
 
+    builder.Configuration
+        .AddJsonFile("appsettings.json")
+        .AddJsonFile($"appsettings.{builder.Environment.EnvironmentName}.json", true)
+        .AddUserSecrets<Program>()
+        .AddEnvironmentVariables();
+    
     builder.Services
-        .ConfigureWebApplicationServices()
+        .ConfigureWebApplicationServices(builder.Configuration)
         .ConfigureApplicationServices()
         .ConfigureInfrastructureServices();
     

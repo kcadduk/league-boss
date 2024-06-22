@@ -1,14 +1,16 @@
 namespace LeagueBoss.Api;
 
 using System.Reflection;
+using DatabaseMigrations;
 using FastEndpoints;
 using FastEndpoints.Swagger;
+using Infrastructure.Persistence;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Serilog;
 
 public static class ConfigureServices
 {
-    internal static IServiceCollection ConfigureWebApplicationServices(this IServiceCollection serviceCollection)
+    internal static IServiceCollection ConfigureWebApplicationServices(this IServiceCollection serviceCollection, IConfiguration configuration)
     {
         serviceCollection.ConfigureFastEndpointsWithAuth()
             .AddCors()
@@ -20,6 +22,13 @@ public static class ConfigureServices
             });
 
         serviceCollection.AddMediator();
+        serviceCollection.AddHostedService<DatabaseMigratorHostedService>();
+
+        serviceCollection
+            .Configure<DatabaseConnectionStrings>(configuration.GetSection(DatabaseConnectionStrings.ConfigurationKey))
+            .AddOptions<DatabaseConnectionStrings>()
+            .ValidateDataAnnotations()
+            .ValidateOnStart();
         
         return serviceCollection;
     }
