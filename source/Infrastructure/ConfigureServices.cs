@@ -11,6 +11,7 @@ public static class ConfigureServices
 {
     public static IServiceCollection ConfigureInfrastructureServices(this IServiceCollection serviceCollection)
     {
+        serviceCollection.AddScoped<IDatabaseMigrationHandler, DatabaseMigrationHandler>();
         serviceCollection.ConfigureEntityFramework();
         return serviceCollection;
     }
@@ -20,7 +21,7 @@ public static class ConfigureServices
         serviceCollection.AddDbContext<IUsersDbContext, UsersDbContext>((provider, builder) =>
         {
             var databaseConnectionStrings = provider.GetRequiredService<IOptions<DatabaseConnectionStrings>>().Value;
-            builder.UseSqlServer(databaseConnectionStrings.UsersDbContext);
+            builder.UseSqlServer(databaseConnectionStrings.SqlServer);
         });
         return serviceCollection;
     }
