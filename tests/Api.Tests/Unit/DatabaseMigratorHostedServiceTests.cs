@@ -1,4 +1,4 @@
-namespace Api.Tests.Unit;
+namespace LeagueBoss.Api.Tests.Unit;
 
 using LeagueBoss.Api.DatabaseMigrations;
 using LeagueBoss.Infrastructure.Persistence;

@@ -7,6 +7,8 @@
 
         <IsPackable>false</IsPackable>
         <IsTestProject>true</IsTestProject>
+        <AssemblyName>LeagueBoss.Api.Tests</AssemblyName>
+        <RootNamespace>LeagueBoss.Api.Tests</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
