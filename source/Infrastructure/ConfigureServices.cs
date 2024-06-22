@@ -2,6 +2,7 @@ namespace LeagueBoss.Infrastructure;
 
 using Application.Users;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using Persistence;
@@ -18,11 +19,15 @@ public static class ConfigureServices
 
     private static IServiceCollection ConfigureEntityFramework(this IServiceCollection serviceCollection)
     {
-        serviceCollection.AddDbContext<IUsersDbContext, UsersDbContext>((provider, builder) =>
+        serviceCollection.AddSingleton<DbContextOptions>(provider =>
         {
             var databaseConnectionStrings = provider.GetRequiredService<IOptions<DatabaseConnectionStrings>>().Value;
-            builder.UseSqlServer(databaseConnectionStrings.SqlServer);
+            
+            return new DbContextOptionsBuilder()
+                .UseSqlServer(databaseConnectionStrings.SqlServer)
+                .Options;
         });
+        serviceCollection.AddDbContext<IUsersDbContext, UsersDbContext>();
         return serviceCollection;
     }
 }
