@@ -15,8 +15,13 @@
         <PackageReference Include="coverlet.collector" Version="6.0.0"/>
         <PackageReference Include="FluentAssertions" Version="6.12.0" />
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0"/>
-        <PackageReference Include="xunit" Version="2.5.3"/>
-        <PackageReference Include="xunit.runner.visualstudio" Version="2.5.3"/>
+        <PackageReference Include="Testcontainers.MsSql" Version="3.9.0" />
+        <PackageReference Include="Verify.Xunit" Version="25.0.3" />
+        <PackageReference Include="xunit" Version="2.8.1" />
+        <PackageReference Include="xunit.runner.visualstudio" Version="2.8.1">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
     </ItemGroup>
 
     <ItemGroup>
@@ -25,6 +30,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\source\Application\Application.csproj" />
+      <ProjectReference Include="..\..\source\Infrastructure\Infrastructure.csproj" />
     </ItemGroup>
 
 </Project>
