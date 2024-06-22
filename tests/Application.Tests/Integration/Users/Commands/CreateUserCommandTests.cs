@@ -2,10 +2,12 @@ namespace LeagueBoss.Application.Tests.Integration.Users.Commands;
 
 using Application.Users;
 using Application.Users.Commands.CreateUser;
+using Domain.Users;
 using Microsoft.Extensions.DependencyInjection;
+using Respawn;
 
 [Collection(nameof(DatabaseFixture))]
-public class CreateUserCommandTests : IClassFixture<IntegrationTestCaseFixture>
+public class CreateUserCommandTests : IClassFixture<IntegrationTestCaseFixture>, IAsyncLifetime
 {
     private readonly IntegrationTestCaseFixture _fixture;
     private readonly CreateUserCommandHandler _sut;
@@ -27,5 +29,34 @@ public class CreateUserCommandTests : IClassFixture<IntegrationTestCaseFixture>
         // Assert
         res.IsFailure.Should().BeTrue();
         await Verify(res.Errors, Verify.Settings);
+    }
+
+    [Fact]
+    public async Task HandleShould_ReturnFailure_WhenEmailAddressExists()
+    {
+        // Arrange
+        var command = new CreateUserCommand("test", string.Empty, "exists@localhost");
+        
+        // Act 
+        var res = await _sut.Handle(command, CancellationToken.None);
+        
+        // Assert
+        res.IsFailure.Should().BeTrue();
+        await Verify(res.Errors, Verify.Settings);
+    }
+
+    public async Task InitializeAsync()
+    {
+        var userName = UserName.Create("test", string.Empty);
+        var emailAddress = EmailAddress.Create("exists@localhost");
+        var user = User.Create(userName, emailAddress);
+        var dbContext = _fixture.DatabaseFixture.GetRequiredService<IUsersDbContext>();
+        await dbContext.AddAsync(user);
+        await dbContext.SaveChangesAsync();
+    }
+
+    public async Task DisposeAsync()
+    {
+        await _fixture.DatabaseFixture.ResetDatabase();
     }
 }

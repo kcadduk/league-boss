@@ -1,0 +1,13 @@
+﻿[
+  {
+    Type: AlreadyRegisteredException,
+    EmailAddress: {
+      Address: exists@localhost
+    },
+    Message: Exception of type 'LeagueBoss.Application.Users.Commands.CreateUser.AlreadyRegisteredException' was thrown.,
+    Data: null,
+    InnerException: null,
+    HelpLink: null,
+    StackTrace: null
+  }
+]

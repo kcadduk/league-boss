@@ -36,9 +36,9 @@ public class DatabaseFixture : IAsyncLifetime
         var serviceCollection = new ServiceCollection()
             .ConfigureInfrastructureServices();
 
-        serviceCollection.RemoveAll(typeof(DbContextOptions<UsersDbContext>));
-        serviceCollection.AddSingleton<DbContextOptions<UsersDbContext>>(_ =>
-            new DbContextOptionsBuilder<UsersDbContext>()
+        serviceCollection.RemoveAll(typeof(DbContextOptions));
+        serviceCollection.AddSingleton<DbContextOptions>(_ =>
+            new DbContextOptionsBuilder()
                 .UseSqlServer(ConnectionString)
                 #if DEBUG
                 .EnableSensitiveDataLogging()

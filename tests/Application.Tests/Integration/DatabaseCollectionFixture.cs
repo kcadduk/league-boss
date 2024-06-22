@@ -9,15 +9,20 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Respawn;
 using Testcontainers.MsSql;
 
 public class DatabaseFixture : IAsyncLifetime, IServiceProvider
 {
     private readonly MsSqlContainer _sqlContainer;
     private ServiceProvider Services { get; set; } = null!;
-
+    private Respawner Respawn { get; set; } = null!;
     public string ConnectionString { get; private set; } = null!;
 
+    public async Task ResetDatabase()
+    {
+        await Respawn.ResetAsync(ConnectionString);
+    }
     public DatabaseFixture()
     {
         _sqlContainer = new MsSqlBuilder()
@@ -29,9 +34,11 @@ public class DatabaseFixture : IAsyncLifetime, IServiceProvider
     {
         await _sqlContainer.StartAsync();
         BuildServiceProvider();
-
         var databaseMigrator = Services.GetRequiredService<IDatabaseMigrationHandler>();
         await databaseMigrator.Apply();
+        
+        Respawn = await Respawner.CreateAsync(ConnectionString);
+
     }
 
     private void BuildServiceProvider()
@@ -43,8 +50,7 @@ public class DatabaseFixture : IAsyncLifetime, IServiceProvider
         {
             InitialCatalog = "LeagueBossApplicationIntegrationTests"
         }.ConnectionString;
-
-
+        
         serviceCollection.RemoveAll(typeof(IOptions<DatabaseConnectionStrings>));
         serviceCollection.AddSingleton(Options.Create(new DatabaseConnectionStrings
         {
