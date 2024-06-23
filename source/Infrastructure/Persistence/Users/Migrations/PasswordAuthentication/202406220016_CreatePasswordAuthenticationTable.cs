@@ -2,7 +2,7 @@ namespace LeagueBoss.Infrastructure.Persistence.Users.Migrations.PasswordAuthent
 
 using FluentMigrator;
 
-[Migration(2024060220016)]
+[Migration(202406220016)]
 public class CreatePasswordAuthenticationTable : ForwardOnlyMigration
 {
     public override void Up()

@@ -26,7 +26,7 @@ public class AuthenticateUserWithPasswordEndpoint : Endpoint<AuthenticateUserWit
 
         if (res.IsFailure)
         {
-            await SendResultAsync(Results.BadRequest(res.Errors));
+            await SendResultAsync(Results.Unauthorized());
             return;
         }
 

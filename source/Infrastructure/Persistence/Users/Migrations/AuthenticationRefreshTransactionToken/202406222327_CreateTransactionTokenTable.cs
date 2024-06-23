@@ -11,7 +11,7 @@ public class CreateTransactionTokenTable : ForwardOnlyMigration
             .WithColumn("Id").AsGuid().PrimaryKey().WithDefault(SystemMethods.NewSequentialId)
             .WithColumn("UserId").AsGuid().NotNullable().ForeignKey(string.Empty, "users", "Users", "Id")
             .WithColumn("Token").AsString(64).NotNullable()
-            .WithColumn("Expires").AsDateTime()
+            .WithColumn("Expires").AsDateTime2()
             .WithColumn("TokenType").AsString(55);
         
     }

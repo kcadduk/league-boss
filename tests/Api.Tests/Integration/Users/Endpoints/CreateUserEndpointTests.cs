@@ -9,7 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using NSubstitute;
 
 [Collection(nameof(WebApplicationFixture))]
-public class CreateUserEndpointTests : IClassFixture<WebApplicationFixture>
+public class CreateUserEndpointTests
 {
     private readonly IMediator _mediator;
     private readonly HttpClient _httpClient;

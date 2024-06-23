@@ -20,6 +20,7 @@ public class LeagueBossWebApplicationFactory : WebApplicationFactory<Program>, I
     
     protected override void ConfigureWebHost(IWebHostBuilder builder)
     {
+        builder.UseEnvironment("Production");
         builder.ConfigureServices(s =>
         {
             s.RemoveAll(typeof(IMediator));

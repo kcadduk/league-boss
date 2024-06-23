@@ -58,9 +58,10 @@ public static class ConfigureServices
                                   ?? throw new NotSupportedException("Bearer Token Configuration is Required");
         
         
-        serviceCollection.AddAuthenticationCookie(validFor: TimeSpan.FromDays(7), o =>
+        serviceCollection.AddAuthenticationCookie(validFor: TimeSpan.FromDays(1), o =>
             {
                 o.Cookie.Name = "LeagueBossCookie";
+                o.SlidingExpiration = true;
                 o.Events.OnRedirectToLogin = c =>
                 {
                     c.Response.StatusCode = StatusCodes.Status401Unauthorized;
