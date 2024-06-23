@@ -1,0 +1,6 @@
+﻿{
+  Id: Guid_1,
+  UserId: Guid_2,
+  Token: Guid_3,
+  Expires: DateTime_1
+}

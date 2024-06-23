@@ -47,12 +47,8 @@ public class CreateUserCommandTests : IClassFixture<IntegrationTestCaseFixture>,
 
     public async Task InitializeAsync()
     {
-        var userName = UserName.Create("test", string.Empty);
-        var emailAddress = EmailAddress.Create("exists@localhost");
-        var user = User.Create(userName, emailAddress);
         var dbContext = _fixture.DatabaseFixture.GetRequiredService<IUsersDbContext>();
-        await dbContext.AddAsync(user);
-        await dbContext.SaveChangesAsync();
+        await dbContext.CreateUser();
     }
 
     public async Task DisposeAsync()
