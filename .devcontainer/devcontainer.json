@@ -18,7 +18,7 @@
         }
       }
     },
-   "postCreateCommand": "dotnet restore && yarn install",
+   "postCreateCommand": "dotnet restore",
     "forwardPorts": [3000, 5000, 5001], 
     "mounts": [
         "source=${localEnv:HOME}${localEnv:USERPROFILE}/.ssh,target=/root/.ssh,type=bind,consistency=cached"
