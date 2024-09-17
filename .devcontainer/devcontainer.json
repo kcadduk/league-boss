@@ -1,0 +1,28 @@
+{
+    "name": "Dotnet & React Dev Container",
+    "build": {
+      "dockerfile": "Dockerfile"
+    },
+    "customizations": {
+      "vscode": {
+        "extensions": [
+          "ms-dotnettools.csharp",
+          "msjsdiag.vscode-react-native",
+          "dbaeumer.vscode-eslint",
+          "esbenp.prettier-vscode"
+        ],
+        "settings": {
+            "terminal.integrated.defaultProfile.linux": "bash",
+            "editor.formatOnSave": true,
+            "files.autoSave": "afterDelay"
+        }
+      }
+    },
+   "postCreateCommand": "dotnet restore && yarn install",
+    "forwardPorts": [3000, 5000, 5001], 
+    "mounts": [
+        "source=${localEnv:HOME}${localEnv:USERPROFILE}/.ssh,target=/root/.ssh,type=bind,consistency=cached"
+    ]
+
+  }
+  
