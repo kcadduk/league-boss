@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -6,13 +6,14 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
+} from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Link } from "@tanstack/react-router";
 
 export default function LoginForm() {
   return (
-    <Card className="w-full max-w-sm">
+    <Card className="w-full max-w-sm bg-white">
       <CardHeader>
         <CardTitle className="text-2xl">Login</CardTitle>
         <CardDescription>
@@ -29,9 +30,15 @@ export default function LoginForm() {
           <Input id="password" type="password" required />
         </div>
       </CardContent>
-      <CardFooter>
+      <CardFooter className="flex-col gap-2">
         <Button className="w-full">Sign in</Button>
+        <Button className="w-full" variant="secondary">
+          Create Account
+        </Button>
+        <Button asChild variant="link">
+          <Link>Forgot Password</Link>
+        </Button>
       </CardFooter>
     </Card>
-  )
+  );
 }
