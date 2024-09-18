@@ -1,20 +1,14 @@
 {
-  "references": [
-    {
-      "path": "./tsconfig.app.json"
-    }
-  ],
   "compilerOptions": {
     "composite": true,
-    "strict": true,
     "esModuleInterop": true,
-    "jsx": "react-jsx",
-    "target": "ESNext",
     "module": "ESNext",
     "moduleResolution": "Bundler",
+    "jsx": "react-jsx",
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
     }
+    // ...
   }
 }
