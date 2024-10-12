@@ -12,6 +12,8 @@ try
 {
     var builder = WebApplication.CreateBuilder(args);
 
+    builder.AddServiceDefaults();
+
     builder.Services
         .ConfigureWebApplicationServices()
         .ConfigureApplicationServices()

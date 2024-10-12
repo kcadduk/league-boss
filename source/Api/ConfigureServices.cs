@@ -32,8 +32,8 @@ public static class ConfigureServices
 
     private static IServiceCollection ConfigureFastEndpointsWithAuth(this IServiceCollection serviceCollection)
     {
-        serviceCollection.AddFastEndpoints()
-            .SwaggerDocument();
+        // serviceCollection.AddFastEndpoints()
+        //     .SwaggerDocument();
         
         serviceCollection
             .AddAuthentication(auth => { auth.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme; })
