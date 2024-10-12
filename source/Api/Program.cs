@@ -6,7 +6,7 @@ using Serilog;
 Log.Logger = new LoggerConfiguration()
     .WriteTo.Console()
     .Enrich.FromLogContext()
-    .CreateBootstrapLogger();
+     .CreateBootstrapLogger();
 
 try
 {
@@ -18,12 +18,17 @@ try
         .ConfigureWebApplicationServices()
         .ConfigureApplicationServices()
         .ConfigureInfrastructureServices();
+
+    builder.ConfigureCosmosDb();
     
     var app = builder.Build();
 
     app.ConfigureMiddleware();
 
+    app.MapDefaultEndpoints();
+
     app.Run();
+
 }
 catch (Exception ex)
 {
