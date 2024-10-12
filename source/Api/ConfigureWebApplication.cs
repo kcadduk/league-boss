@@ -11,8 +11,8 @@ public static class ConfigureWebApplication
         app.UseCors();
         app.UseAuthentication();
         app.UseAuthorization();
-        // app.UseFastEndpoints()
-        //     .UseSwaggerGen();
+        app.UseFastEndpoints();
+        app.UseSwaggerGen();
         
         return app;
     }
